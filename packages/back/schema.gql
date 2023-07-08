@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type City {
+  id: ID!
+  codeCommune: String!
+  codePostal: String!
+  libelleAcheminement: String!
+  nomCommune: String!
+}
+
+type CitiesPagination {
+  nodes: [City!]!
+  totalCount: Float!
+}
+
+type Query {
+  cities(take: Int!, sortBy: CitiesPaginationSortBy): CitiesPagination!
+}
+
+input CitiesPaginationSortBy {
+  nomCommune: SortDirection
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
