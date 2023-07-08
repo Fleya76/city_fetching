@@ -11,12 +11,7 @@ export class CityQueriesResolver {
     constructor(private readonly cityService: CityService) {}
 
     @Query(() => CitiesPagination)
-    async cities(@Args() args: CitiesPaginationArgs) {
-        return this.cityService.citiesPagination(args);
-    }
-
-    @Query(() => [City])
-    async searchCitiesByKeyword(@Args('keyword') keyword: string): Promise<City[]> {
-        return this.cityService.searchCitiesByKeyword(keyword);
+    async searchCitiesByKeyword(@Args() args: CitiesPaginationArgs) {
+        return this.cityService.searchCitiesByKeyword(args);
     }
 }

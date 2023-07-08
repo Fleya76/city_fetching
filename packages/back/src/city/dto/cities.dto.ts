@@ -1,4 +1,4 @@
-import { ArgsType, Field, InputType, Int, ObjectType, registerEnumType,} from '@nestjs/graphql';
+import { ArgsType, Field, InputType, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { City } from '../models/city.model';
 
 export enum SortDirection {
@@ -20,12 +20,15 @@ export class PaginationArgs {
     @Field(() => Int)
     take: number;
 
+    @Field(() => String, { nullable: true })
+    keyword?: string;
+
     @Field(() => CitiesPaginationSortBy, { nullable: true })
     sortBy?: CitiesPaginationSortBy;
 }
 
 @ArgsType()
-export class CitiesPaginationArgs extends PaginationArgs{
+export class CitiesPaginationArgs extends PaginationArgs {
     @Field(() => CitiesPaginationSortBy, { nullable: true })
     sortBy?: CitiesPaginationSortBy;
 }

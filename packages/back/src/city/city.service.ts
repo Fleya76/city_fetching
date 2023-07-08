@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ILike, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { City } from './models/city.model';
 import { CitiesPagination, CitiesPaginationArgs, SortDirection} from "./dto/cities.dto";
 
@@ -11,17 +11,7 @@ export class CityService {
         private readonly cityRepository: Repository<City>,
     ) {}
 
-    async searchCitiesByKeyword(keyword: string): Promise<City[]> {
-        return this.cityRepository.find({
-            where: {
-                nomCommune: ILike(`%${keyword}%`),
-            },
-        });
-    }
-
-    async citiesPagination(
-        args: CitiesPaginationArgs,
-    ): Promise<CitiesPagination> {
+    async searchCitiesByKeyword( args: CitiesPaginationArgs): Promise<CitiesPagination> {
         const qb = this.cityRepository.createQueryBuilder('city');
         qb.take(args.take);
         if (args.sortBy) {
@@ -31,6 +21,11 @@ export class CityService {
                     args.sortBy.nomCommune === SortDirection.ASC ? 'ASC' : 'DESC',
                 );
             }
+        }
+        if (args.keyword) {
+            qb.where('LOWER(city.nomCommune) LIKE LOWER(:keyword)', {
+                keyword: `%${args.keyword}%`,
+            });
         }
         const [nodes, totalCount] = await qb.getManyAndCount();
         return { nodes, totalCount };
