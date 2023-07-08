@@ -1,9 +1,11 @@
 {
   "name": "graneet",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
     "lint": "eslint --ext .ts \"packages/**/*.ts\" --fix",
     "prepare": "husky install",
@@ -14,11 +16,6 @@
   "lint-staged": {
     "packages/**/*.ts": [
       "npm run prettier"
-    ]
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*"
     ]
   },
   "devDependencies": {
