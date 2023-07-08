@@ -8,10 +8,10 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts \"packages/**/*.ts\" --fix",
-    "prepare": "husky install",
     "prettier": "prettier --write \"packages/**/*.ts\"",
     "start-back": "lerna run start --scope=back",
-    "start-back-dev": "lerna run start:dev --scope=back"
+    "start-back-dev": "lerna run start:dev --scope=back",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "packages/**/*.ts": [
