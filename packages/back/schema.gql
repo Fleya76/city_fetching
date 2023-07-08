@@ -17,6 +17,7 @@ type CitiesPagination {
 
 type Query {
   cities(take: Int!, sortBy: CitiesPaginationSortBy): CitiesPagination!
+  searchCitiesByKeyword(keyword: String!): [City!]!
 }
 
 input CitiesPaginationSortBy {

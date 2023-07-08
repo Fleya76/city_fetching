@@ -8,9 +8,7 @@ import { CityQueriesResolver } from './resolvers/city.queries.resolver';
     imports: [TypeOrmModule.forFeature([City])],
     providers: [
         CityService,
-        // CityMutationsResolver,
         CityQueriesResolver,
-        // CityFieldsResolver,
     ],
     exports: [CityService],
 })

@@ -14,4 +14,9 @@ export class CityQueriesResolver {
     async cities(@Args() args: CitiesPaginationArgs) {
         return this.cityService.citiesPagination(args);
     }
+
+    @Query(() => [City])
+    async searchCitiesByKeyword(@Args('keyword') keyword: string): Promise<City[]> {
+        return this.cityService.searchCitiesByKeyword(keyword);
+    }
 }

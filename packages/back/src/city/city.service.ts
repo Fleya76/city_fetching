@@ -1,20 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { City } from './models/city.model';
-import { CitiesPagination, CitiesPaginationArgs, SortDirection } from "./dto/cities.dto";
+import { CitiesPagination, CitiesPaginationArgs, SortDirection} from "./dto/cities.dto";
 
 @Injectable()
 export class CityService {
     constructor(
         @InjectRepository(City)
-        private readonly articleRepository: Repository<City>,
+        private readonly cityRepository: Repository<City>,
     ) {}
+
+    async searchCitiesByKeyword(keyword: string): Promise<City[]> {
+        return this.cityRepository.find({
+            where: {
+                nomCommune: ILike(`%${keyword}%`),
+            },
+        });
+    }
 
     async citiesPagination(
         args: CitiesPaginationArgs,
     ): Promise<CitiesPagination> {
-        const qb = this.articleRepository.createQueryBuilder('city');
+        const qb = this.cityRepository.createQueryBuilder('city');
         qb.take(args.take);
         if (args.sortBy) {
             if (args.sortBy.nomCommune !== null) {

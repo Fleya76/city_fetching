@@ -37,5 +37,4 @@ export class CitiesPagination {
 
     @Field()
     totalCount: number;
-
 }
