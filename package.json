@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint --ext .ts packages --fix",
+    "lint": "eslint --ext .ts \"packages/**/*.ts\" --fix",
     "prettier": "prettier --write \"packages/**/*.ts\""
   },
   "devDependencies": {
