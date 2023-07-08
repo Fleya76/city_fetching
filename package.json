@@ -9,9 +9,9 @@
   "scripts": {
     "lint": "eslint --ext .ts \"packages/**/*.ts\" --fix",
     "prettier": "prettier --write \"packages/**/*.ts\"",
+    "prepare": "husky install",
     "start-back": "lerna run start --scope=back",
-    "start-back-dev": "lerna run start:dev --scope=back",
-    "prepare": "husky install"
+    "start-back-dev": "lerna run start:dev --scope=back"
   },
   "lint-staged": {
     "packages/**/*.ts": [

@@ -8,7 +8,7 @@ export class CityQueriesResolver {
   constructor(private readonly cityService: CityService) {}
 
   @Query(() => CitiesPagination)
-  async searchCitiesByKeyword(@Args() args: PaginationArgs) {
-    return this.cityService.searchCitiesByKeyword(args);
+  async searchCitiesByArgs(@Args() args: PaginationArgs) {
+    return this.cityService.searchCitiesByArgs(args);
   }
 }

@@ -28,8 +28,11 @@ export class PaginationArgs {
   @Field(() => Int)
   take: number;
 
+  @Field(() => Int, { nullable: true })
+  codePostal?: number;
+
   @Field(() => String, { nullable: true })
-  keyword?: string;
+  nomCommune?: string;
 
   @Field(() => CitiesPaginationSortBy, { nullable: true })
   sortBy?: CitiesPaginationSortBy;

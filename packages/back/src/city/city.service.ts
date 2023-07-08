@@ -15,7 +15,7 @@ export class CityService {
     private readonly cityRepository: Repository<City>,
   ) {}
 
-  async searchCitiesByKeyword(args: PaginationArgs): Promise<CitiesPagination> {
+  async searchCitiesByArgs(args: PaginationArgs): Promise<CitiesPagination> {
     const qb = this.cityRepository.createQueryBuilder('city');
     qb.take(args.take);
     if (args.sortBy) {
@@ -26,9 +26,13 @@ export class CityService {
         );
       }
     }
-    if (args.keyword) {
-      qb.where('LOWER(city.nomCommune) LIKE LOWER(:keyword)', {
-        keyword: `%${args.keyword}%`,
+    if (args.nomCommune) {
+      qb.where('LOWER(city.nomCommune) LIKE LOWER(:nomCommune)', {
+        nomCommune: `%${args.nomCommune}%`,
+      });
+    } else if (args.codePostal) {
+      qb.where('LOWER(city.codePostal) LIKE LOWER(:codePostal)', {
+        codePostal: `%${args.codePostal}%`,
       });
     }
     const [nodes, totalCount] = await qb.getManyAndCount();
