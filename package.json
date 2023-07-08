@@ -6,9 +6,20 @@
   ],
   "scripts": {
     "lint": "eslint --ext .ts \"packages/**/*.ts\" --fix",
+    "prepare": "husky install",
     "prettier": "prettier --write \"packages/**/*.ts\"",
     "start-back": "lerna run start --scope=back",
     "start-back-dev": "lerna run start:dev --scope=back"
+  },
+  "lint-staged": {
+    "packages/**/*.ts": [
+      "npm run prettier"
+    ]
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.61.0",
