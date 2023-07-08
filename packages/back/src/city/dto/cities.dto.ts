@@ -1,43 +1,45 @@
-import { ArgsType, Field, InputType, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
+import {
+  ArgsType,
+  Field,
+  InputType,
+  Int,
+  ObjectType,
+  registerEnumType,
+} from '@nestjs/graphql';
 import { City } from '../models/city.model';
 
 export enum SortDirection {
-    ASC,
-    DESC,
+  ASC,
+  DESC,
 }
 
 registerEnumType(SortDirection, {
-    name: 'SortDirection',
+  name: 'SortDirection',
 });
+
 @InputType()
 export class CitiesPaginationSortBy {
-    @Field(() => SortDirection, { nullable: true })
-    nomCommune?: SortDirection;
+  @Field(() => SortDirection, { nullable: true })
+  nomCommune?: SortDirection;
 }
 
 @ArgsType()
 export class PaginationArgs {
-    @Field(() => Int)
-    take: number;
+  @Field(() => Int)
+  take: number;
 
-    @Field(() => String, { nullable: true })
-    keyword?: string;
+  @Field(() => String, { nullable: true })
+  keyword?: string;
 
-    @Field(() => CitiesPaginationSortBy, { nullable: true })
-    sortBy?: CitiesPaginationSortBy;
-}
-
-@ArgsType()
-export class CitiesPaginationArgs extends PaginationArgs {
-    @Field(() => CitiesPaginationSortBy, { nullable: true })
-    sortBy?: CitiesPaginationSortBy;
+  @Field(() => CitiesPaginationSortBy, { nullable: true })
+  sortBy?: CitiesPaginationSortBy;
 }
 
 @ObjectType()
 export class CitiesPagination {
-    @Field(() => [City])
-    nodes: City[];
+  @Field(() => [City])
+  nodes: City[];
 
-    @Field()
-    totalCount: number;
+  @Field()
+  totalCount: number;
 }
