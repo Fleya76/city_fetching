@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components'
 import { gql, useLazyQuery } from "@apollo/client";
-import {addCities, City} from "../stores/citySlice";
+import {addCities, City, resetCities} from "../stores/citySlice";
 import {useAppDispatch} from "../hooks/stores";
 
 const Input = styled.input`
@@ -43,8 +43,10 @@ export const Search: React.FC<SearchProps> = ({placeholder}) => {
 
     useEffect(() => {
         const cities = data?.searchCitiesByArgs?.nodes
-        if(cities){
+        if(cities && searchTerm){
             dispatch(addCities(cities))
+        } else {
+            dispatch(resetCities())
         }
     }, [data])
 

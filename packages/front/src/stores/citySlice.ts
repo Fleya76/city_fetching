@@ -23,9 +23,12 @@ const citySlice = createSlice({
     addCities: (state: CityState, action: PayloadAction<City[]>) => {
       state.cities = action.payload;
     },
+    resetCities: (state: CityState) => {
+      state.cities = [];
+    },
   },
 });
 
 export const selectCities = (state: RootState): City[] => state.city.cities;
-export const { addCities } = citySlice.actions;
+export const { addCities, resetCities } = citySlice.actions;
 export default citySlice.reducer;

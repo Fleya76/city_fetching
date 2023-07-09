@@ -1,13 +1,23 @@
 import React, { useMemo } from 'react';
+import styled from "styled-components";
 import {City, selectCities} from "../stores/citySlice";
 import {useAppSelector} from "../hooks/stores";
+import {isOverseasPostalCode} from "../helpers/isOverseasPostalCode";
+import {Panel} from "./Panel";
+import {useTranslation} from "react-i18next";
 
-function isOverseasPostalCode(postalCode: string): boolean {
-    const overseasPrefixes = ['971', '972', '973', '974', '976'];
-    return overseasPrefixes.some(prefix => postalCode.startsWith(prefix));
-}
+const Container = styled.div`
+  display: flex;
+  margin-top: ${props => props.theme.margin.medium};
+  gap: 10px;
+  justify-content: space-between;
+  @media (max-width: ${(props) => props.theme.device.mobile.max}) {
+    flex-direction: column;
+  }
+`
 
 export const Body: React.FC = () => {
+    const { t } = useTranslation();
     const cities = useAppSelector(selectCities);
     
     const {metropolisCities, overseasCities } = useMemo(() => {
@@ -26,7 +36,9 @@ export const Body: React.FC = () => {
     }, [cities]);
 
     return (
-        <div>Cities</div>
+        <Container>
+            <Panel title={t('metropolisCity')} cities={metropolisCities}/>
+            <Panel title={t('overseasCity')} cities={overseasCities}/>
+        </Container>
     );
 }
-

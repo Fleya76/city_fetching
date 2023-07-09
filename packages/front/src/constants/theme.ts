@@ -1,7 +1,7 @@
 export const theme = {
   device: {
     mobile: {
-      min: '0px',
+      min: '300px',
       max: '600px',
     },
     tablet: {
@@ -26,5 +26,13 @@ export const theme = {
   },
   fontSizes: {
     large: '30px',
+  },
+  margin: {
+    large: '35px',
+    medium: '27px',
+  },
+  padding: {
+    large: '30px',
+    medium: '15px',
   },
 };
