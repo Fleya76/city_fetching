@@ -1,0 +1,13 @@
+{
+  "pageTitle": "My Application",
+  "labelSearchCity": "I'm looking for...",
+  "placeholderSearchCity": " ...a city, a postal code",
+  "metropolisCity": "Metropolis Cities",
+  "overseasCity": "Overseas Cities",
+  "searchResult": {
+    "cityFound": "{{number}} city",
+    "citiesFound": "{{number}} cities",
+    "cityEmpty": "No city",
+    "labelResult": "{{result}} matching the entered text"
+  }
+}

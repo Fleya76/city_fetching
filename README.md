@@ -32,5 +32,6 @@ Data fetchnig test
 
 [//]: # npm run prepare
 
+[//]: # (?lang=en)
 ## Installation
 # Useful links
