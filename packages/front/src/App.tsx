@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import {Header} from "./components/Header";
-import {Panel} from "./components/Panel";
+import {Body} from "./components/Body";
 
 const Container = styled.div`
   margin: 35px 27px;
@@ -12,7 +12,7 @@ const App: React.FC = () => {
   return (
     <Container>
       <Header />
-      <Panel />
+      <Body />
     </Container>
   );
 }
