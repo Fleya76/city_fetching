@@ -48,7 +48,7 @@ export const Search: React.FC<SearchProps> = ({placeholder}) => {
         } else {
             dispatch(resetCities())
         }
-    }, [data])
+    }, [data, searchTerm])
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;

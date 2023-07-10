@@ -10,8 +10,10 @@
     "lint": "eslint --ext .ts \"packages/**/*.ts\" --fix",
     "prettier": "prettier --write \"packages/**/*.ts\"",
     "prepare": "husky install",
-    "start-back": "lerna run start --scope=back",
-    "start-back-dev": "lerna run start:dev --scope=back"
+    "start": "concurrently \"npm run start:back\" \"npm run start:front\"",
+    "start:back": "lerna run start --scope=back",
+    "start:back:dev": "lerna run start:dev --scope=back",
+    "start:front": "lerna run start --scope=front"
   },
   "lint-staged": {
     "packages/**/*.ts": [
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
+    "concurrently": "^8.2.0",
     "eslint": "^8.44.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.8.0",

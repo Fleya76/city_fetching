@@ -19,7 +19,8 @@ const Container = styled.div`
 export const Body: React.FC = () => {
     const { t } = useTranslation();
     const cities = useAppSelector(selectCities);
-    
+
+    // Separates cities into metropolisCities and overseasCities using useMemo
     const {metropolisCities, overseasCities } = useMemo(() => {
         const metropolisCities: City[] = [];
         const overseasCities: City[] = [];

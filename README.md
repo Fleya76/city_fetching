@@ -28,10 +28,23 @@ Data fetchnig test
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⣀⡤⠖⢄⠀⣰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⠒⠒⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠈⠙⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 # Requirements
+- Nodejs v18.x (https://nodejs.org/en/)
+
+# Installation
+```
+  npm install
+  ```
 # Getting started
+```
+  npm start
+  ```
 
-[//]: # npm run prepare
+# URL
 
-[//]: # (?lang=en)
-## Installation
-# Useful links
+- Backend in local: http://localhost:3001
+- GraphQL in local: http://localhost:3001/graphql
+- Frontend in local: http://localhost:3000
+
+## Useful informations
+
+- If you want to switch the language you can add a param in the url named `lang` and put the lang value. For example `http://localhost:3000/?lang=en`

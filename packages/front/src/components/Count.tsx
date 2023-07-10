@@ -10,18 +10,16 @@ const Container = styled.div<{ value: number }>`
   background-color: ${props => props.value > 0 ? props.theme.colors.primary : props.theme.colors.secondary};
   margin: ${props => props.theme.margin.medium};
   padding-left: ${props => props.theme.padding.large};
+  height: 6vh;
   @media (max-width: ${(props) => props.theme.device.mobile.max}) {
     padding-left: ${props => props.theme.padding.medium};
   }
-  height: 6vh;
 `;
 
 interface CountProps {
     value: number;
 }
-
 const findTranslation = (value: number): string => value ? value > 1 ? 'citiesFound' : 'cityFound' : 'cityEmpty';
-
 export const Count: React.FC<CountProps> = ({ value }) => {
     const { t } = useTranslation();
     const translationKey = findTranslation(value);

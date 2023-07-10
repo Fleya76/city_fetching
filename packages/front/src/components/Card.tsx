@@ -17,14 +17,12 @@ const Container = styled.div`
 
 const Name = styled.span`
   color: white;
-  font-weight: bold;
   padding-left: ${props => props.theme.padding.large};
   
 `;
 
 const Code = styled.span`
   color: lightgrey;
-  font-weight: bold;
   padding-right: ${props => props.theme.padding.large};
 
 `;
@@ -36,7 +34,7 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({name, code}) => {
     return (
-        <Container>
+        <Container data-testid="city-card">
             <Name>{name}</Name>
             <Code>{code}</Code>
         </Container>
