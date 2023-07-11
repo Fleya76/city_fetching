@@ -11,6 +11,10 @@ const Container = styled.span`
   white-space: nowrap;
 `
 
+ /**
+ * @param text
+ * *Description: An simple label with style to display some text.
+ */
 export const Label: React.FC<LabelProps> = ({text}) => {
     return (
         <Container>

@@ -17,6 +17,10 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+/**
+ * Description: The index of this application used to put some providers like Apollo (needed for GraphQl), RTK, i18n and the theme.
+ */
 root.render(
   <React.StrictMode>
       <ApolloProvider client={client}>

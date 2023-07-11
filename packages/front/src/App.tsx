@@ -8,6 +8,9 @@ const Container = styled.div`
   min-width: ${props => props.theme.device.mobile.min};
 `
 
+/**
+ * Description: An App component who contains the main part of this application with the header and the body.
+ */
 const App: React.FC = () => {
   return (
     <Container>

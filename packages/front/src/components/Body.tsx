@@ -16,6 +16,9 @@ const Container = styled.div`
   }
 `
 
+/**
+ * Description: A Body component used to display two panel of data (metropolis and overseas city) feed by RTK.
+ */
 export const Body: React.FC = () => {
     const { t } = useTranslation();
     const cities = useAppSelector(selectCities);

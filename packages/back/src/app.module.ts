@@ -5,6 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CityModule } from './city/city.module';
 import { City } from './city/models/city.model';
 
+/**
+ * Description: Main module for my Nest application and he is feed by Apollo and TypeORM providers.
+ */
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({

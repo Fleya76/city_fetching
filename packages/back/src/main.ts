@@ -1,6 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import * as dotenv from 'dotenv';
 import { AppModule } from './app.module';
+
+/**
+ * Description: Initialise Nest with a basic configuration.
+ */
 async function bootstrap() {
   const environment = process.env.NODE_ENV || 'development';
   const filePath = `.env.${environment}`;

@@ -14,6 +14,7 @@ const resources = {
     translation: require('./locales/en.json'),
   },
 };
+
 i18next.use(initReactI18next).init({
   fallbackLng: 'fr',
   interpolation: { escapeValue: false },

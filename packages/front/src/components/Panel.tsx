@@ -26,6 +26,11 @@ interface PanelProps {
     title: string;
 }
 
+/**
+ * @param cities
+ * @param title
+ * Description: An Panel component that contains the cities card display.
+ */
 export const Panel: React.FC<PanelProps> = ({cities, title}) => {
     return (
         <Container>

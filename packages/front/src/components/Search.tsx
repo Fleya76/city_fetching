@@ -24,6 +24,9 @@ interface SearchProps {
     placeholder: string;
 }
 
+/**
+ * Description: A graphQL query who take 2 params, name and code.
+ */
 const CITIES_QUERY = gql`
     query GetCities($name: String, $code: Int) {
       searchCitiesByArgs(nomCommune: $name, codePostal: $code, take: 100, sortBy: { nomCommune: ASC }) {
@@ -36,6 +39,10 @@ const CITIES_QUERY = gql`
     }
   `;
 
+/**
+ * @param placeholder
+ * Description: An Search component used to feed the application (store RTK) with cities data. We can fetch cities data by postalCode or city name.
+ */
 export const Search: React.FC<SearchProps> = ({placeholder}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const dispatch = useAppDispatch();

@@ -15,6 +15,10 @@ export class CityService {
     private readonly cityRepository: Repository<City>,
   ) {}
 
+  /**
+   * Description: A service function used by the GraphQL resolver to search in the database with TypeORM all cities filtered by arguments.
+   * @param args
+   */
   async searchCitiesByArgs(args: PaginationArgs): Promise<CitiesPagination> {
     const qb = this.cityRepository.createQueryBuilder('city');
     qb.take(args.take);

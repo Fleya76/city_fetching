@@ -20,6 +20,11 @@ interface CountProps {
     value: number;
 }
 const findTranslation = (value: number): string => value ? value > 1 ? 'citiesFound' : 'cityFound' : 'cityEmpty';
+
+/**
+ * Description: A simple component to find and display the good translations related to the cities count.
+ * @param value
+ */
 export const Count: React.FC<CountProps> = ({ value }) => {
     const { t } = useTranslation();
     const translationKey = findTranslation(value);

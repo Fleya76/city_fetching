@@ -32,6 +32,11 @@ interface CardProps {
     code: string;
 }
 
+/**
+ * @param name
+ * @param code
+ * Description: A Card component to display the Name and the Code of a city with some style.
+ */
 export const Card: React.FC<CardProps> = ({name, code}) => {
     return (
         <Container data-testid="city-card">

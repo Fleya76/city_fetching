@@ -23,6 +23,10 @@ export class CitiesPaginationSortBy {
   nomCommune?: SortDirection;
 }
 
+/**
+ * Description: DTO of the arguments take by the GraphQL query.
+ * Payload: `take` is used to define the return number of elements, `sortBy` is used to sort by asc or desc the city name. `codePostal` and `nomCommune` is a City properties.
+ */
 @ArgsType()
 export class PaginationArgs {
   @Field(() => Int)

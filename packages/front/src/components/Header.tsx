@@ -19,7 +19,9 @@ const Container = styled.div`
     padding-bottom: 15px;
   }
 `
-
+/**
+ * Description: An Header component that contains a label and a search component to feed the application with data cities.
+ */
 export const Header: React.FC = () => {
     const { t } = useTranslation();
     return (
