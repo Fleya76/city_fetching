@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { gql, useLazyQuery } from "@apollo/client";
 import {addCities, City, resetCities} from "../stores/citySlice";
 import {useAppDispatch} from "../hooks/stores";
+import {containsLetters} from "../helpers/containsLetters";
 
 const Input = styled.input`
   border: none;
@@ -24,8 +25,8 @@ interface SearchProps {
 }
 
 const CITIES_QUERY = gql`
-    query GetCities($searchTerm: String!) {
-      searchCitiesByArgs(nomCommune: $searchTerm, take: 100, sortBy: { nomCommune: ASC }) {
+    query GetCities($name: String, $code: Int) {
+      searchCitiesByArgs(nomCommune: $name, codePostal: $code, take: 100, sortBy: { nomCommune: ASC }) {
         nodes {
           id
           codePostal
@@ -53,7 +54,8 @@ export const Search: React.FC<SearchProps> = ({placeholder}) => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setSearchTerm(value);
-        getCities({ variables: { searchTerm: value } });
+        const args = containsLetters(value) ? { name: value} : { code: parseInt(value) }
+        getCities({ variables: args });
     };
 
     return (
