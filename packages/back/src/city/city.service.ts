@@ -25,6 +25,16 @@ export class CityService {
     if (args.sortBy) {
       if (args.sortBy.nomCommune !== null) {
         qb.addOrderBy(
+          `CASE WHEN city.codePostal LIKE '971%' THEN 1
+              WHEN city.codePostal LIKE '972%' THEN 2
+              WHEN city.codePostal LIKE '973%' THEN 3
+              WHEN city.codePostal LIKE '974%' THEN 4
+              WHEN city.codePostal LIKE '976%' THEN 5
+              ELSE 6
+         END`,
+          'ASC',
+        );
+        qb.addOrderBy(
           'city.nomCommune',
           args.sortBy.nomCommune === SortDirection.ASC ? 'ASC' : 'DESC',
         );
