@@ -5,6 +5,7 @@ import {addCities, City, resetCities} from "../stores/citySlice";
 import {useAppDispatch} from "../hooks/stores";
 import {containsLetters} from "../helpers/containsLetters";
 import {hasSpecialCharacters} from "../helpers/hasSpecialCharacters";
+import {containsOnlyZeros} from "../helpers/containsOnlyZeros";
 
 const Input = styled.input`
   border: none;
@@ -61,7 +62,7 @@ export const Search: React.FC<SearchProps> = ({placeholder}) => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setSearchTerm(value);
-        const args = containsLetters(value) ? { name: value} : { code: parseInt(value) }
+        const args = containsLetters(value) ? { name: value} : { code: containsOnlyZeros(value) ? value : parseInt(value) }
         getCities({ variables: args });
     };
 
