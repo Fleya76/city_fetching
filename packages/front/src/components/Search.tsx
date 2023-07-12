@@ -44,7 +44,7 @@ const CITIES_QUERY = gql`
  * Description: An Search component used to feed the application (store RTK) with cities data. We can fetch cities data by postalCode or city name.
  */
 export const Search: React.FC<SearchProps> = ({placeholder}) => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState<string>('');
     const dispatch = useAppDispatch();
     const [getCities, { data }] = useLazyQuery<CitiesResponse>(CITIES_QUERY);
 
