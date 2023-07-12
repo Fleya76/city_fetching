@@ -4,6 +4,7 @@ import { gql, useLazyQuery } from "@apollo/client";
 import {addCities, City, resetCities} from "../stores/citySlice";
 import {useAppDispatch} from "../hooks/stores";
 import {containsLetters} from "../helpers/containsLetters";
+import {hasSpecialCharacters} from "../helpers/hasSpecialCharacters";
 
 const Input = styled.input`
   border: none;
@@ -48,10 +49,9 @@ export const Search: React.FC<SearchProps> = ({placeholder}) => {
     const dispatch = useAppDispatch();
     const [getCities, { data }] = useLazyQuery<CitiesResponse>(CITIES_QUERY);
 
-
     useEffect(() => {
         const cities = data?.searchCitiesByArgs?.nodes
-        if(cities && searchTerm){
+        if(cities && searchTerm && !hasSpecialCharacters(searchTerm)){
             dispatch(addCities(cities))
         } else {
             dispatch(resetCities())
